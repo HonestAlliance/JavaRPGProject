@@ -10,5 +10,6 @@ import dym.rpg.tile.Tiles;
 public class TestScene2 extends Scene {
 	public TestScene2() {
 		super("res/maps/test2.map");
+		System.out.println("deaht");
 	}
 }

@@ -40,7 +40,8 @@ public class MapEditor extends JPanel implements MouseListener {
 			Tiles.tile_boulder_grey,
 			Tiles.tile_lamp_base,
 			Tiles.tile_lamp_post,
-			Tiles.tile_lamp
+			Tiles.tile_lamp,
+			Tiles.tile_sign1
 		};
 	String[] names = {
 			"grass1",
@@ -48,7 +49,8 @@ public class MapEditor extends JPanel implements MouseListener {
 			"boulder_grey",
 			"lamp_base",
 			"lamp_post",
-			"lamp"
+			"lamp",
+			"sign1"
 	};
 	int index = 0;
 	JFrame frame;
@@ -151,7 +153,7 @@ public class MapEditor extends JPanel implements MouseListener {
 				}
 			} else {
 				if (m3d == true){
-					tileMap.mainTiles.add(new Tile(new Vector2(x,y), tileArray[index], names[index]));
+					tileMap.mainTiles.add(new Tile(new Vector2(x,y), tileArray[index], ""+index));
 	
 				}
 				if (m2d == true){
@@ -170,7 +172,7 @@ public class MapEditor extends JPanel implements MouseListener {
 						}
 					}
 	
-					tileMap.mainTiles.add(new Tile(new Vector2(x,y), tileArray[index], names[index]));
+					tileMap.mainTiles.add(new Tile(new Vector2(x,y), tileArray[index], ""+index));
 				}
 			}
 		} 
@@ -217,6 +219,9 @@ public class MapEditor extends JPanel implements MouseListener {
 		}
 		if(Input.keysDown.contains(KeyEvent.VK_6)){
 			index = 5;
+		}
+		if(Input.keysDown.contains(KeyEvent.VK_7)){
+			index = 6;
 		}
 		if(Input.keysDown.contains(KeyEvent.VK_ENTER)){
 			save();

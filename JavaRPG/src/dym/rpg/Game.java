@@ -87,6 +87,7 @@ public class Game extends JFrame {
 		ClockText.init();
 		Tiles.init();
 		LightingHandler.init();
+		SceneManager.init();
 		this.setBackground(Color.BLACK);
 		
 		//testMusic = new TestMusic();
@@ -127,6 +128,7 @@ public class Game extends JFrame {
 	}
 	
 	public static void loop() {
+		if (SceneManager.currentScene==null)return;
 		try {
 			MessageHandler.update();
 			if (!SceneManager.currentScene.menuScene) {

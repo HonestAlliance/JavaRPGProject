@@ -40,20 +40,30 @@ public abstract class Scene {
            	//Set line equal to the next line and only do the loop if it has a value
             while ((line=in.readLine())!=null) {
            		String[] splt = line.split(" ");
-           		if (splt[0]=="t") {
+//        		for (String s1 : splt) {
+//        			System.out.print(s1+" ");
+//        		}
+//        		System.out.println();
+           	//	System.out.println("test2");
+           		if (splt[0].equals("t")) {
            			if (splt.length!=4) {
            				System.err.println("Incorrect format!");
            			} else {
-           				tileMap.mainTiles.add(new Tile(new Vector2(Integer.parseInt(splt[1]), Integer.parseInt(splt[2])), Tiles.tiles.get(splt[3])));
+           				Tile t = new Tile(new Vector2(Double.parseDouble(splt[1]), Double.parseDouble(splt[2])), Tiles.tiles.get(1));
+           				tileMap.mainTiles.add(t);
+
            			}
-           		} else if (splt[0]=="c") {
+           		} else if (splt[0].equals("c")) {
            			if (splt.length!=4) {
            				System.err.println("Incorrect format!);");
            			} else {
-           				collisionMap.collisions.add(new Collision(CollisionType.SOLID,Integer.parseInt(splt[1]), Integer.parseInt(splt[2])));
+           				collisionMap.collisions.add(new Collision(CollisionType.SOLID,(int)Double.parseDouble(splt[1]), (int)Double.parseDouble(splt[2])));
            			}
            		}
            	}
+    		System.out.println();
+       		System.out.println(tileMap.mainTiles.size());
+
             in.close();
         } catch (IOException e) {
             System.out.println("Cannot open file.");

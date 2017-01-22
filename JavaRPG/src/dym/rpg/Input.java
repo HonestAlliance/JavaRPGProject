@@ -25,13 +25,13 @@ public class Input implements KeyListener, MouseListener{
 		Input.mouseDown = new ArrayList<Integer>();
 	}
 
-	public void click(int x, int y) {
+	/*public void click(int x, int y) {
 		for (Entity e : SceneManager.currentScene.entities) {
 			if (e.bbox.collidePoint(new Vector2(x,y))) {
 				e.click();
 			}
 		}
-	}
+	}*/
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -74,7 +74,6 @@ public class Input implements KeyListener, MouseListener{
 		if (!mouseDown.contains(e.getButton())) {
 			mouseDown.add(e.getButton());
 		}
-		click(e.getX(),e.getY());
 	}
 
 	@Override

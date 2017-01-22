@@ -15,9 +15,9 @@ public class Image {
 	public Image(File file) {
 		try {
 			img = ImageIO.read(file);
-			System.out.println("Loaded image: " + file.getPath());
+			//System.out.println("Loaded image: " + file.getPath());
 		} catch (IOException e) {
-			System.err.println("Failed to load image: " + file.getPath());
+			//System.err.println("Failed to load image: " + file.getPath());
 		}
 	}
 	public void draw(Graphics g, int x, int y) {

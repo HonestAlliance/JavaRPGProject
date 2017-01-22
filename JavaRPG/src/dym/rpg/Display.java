@@ -50,66 +50,68 @@ public class Display extends JPanel {
 		g.setColor(Color.DARK_GRAY);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
+		if (SceneManager.currentScene!=null) {
 		//Draw all tiles.
-		SceneManager.currentScene.tileMap.drawTiles(g);
-		for (Entity e : SceneManager.currentScene.entities) {
-			e.draw(g);
-		}
-		//Draw the player (Unless on menu)
-		if (!SceneManager.currentScene.menuScene)
-			Game.p.draw(g);
+			SceneManager.currentScene.tileMap.drawTiles(g);
+			for (Entity e : SceneManager.currentScene.entities) {
+				e.draw(g);
+			}
+			//Draw the player (Unless on menu)
+			if (!SceneManager.currentScene.menuScene)
+				Game.p.draw(g);
+			
+			
+			//Draw Dawn/Evening/Night Shading;
+			int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+			if (!(SceneManager.currentScene.lighting==Scene.LIGHT)&&!SceneManager.currentScene.menuScene) {
+				if (hour<6 || hour>20 || SceneManager.currentScene.lighting==Scene.DARK) {
+					LightingHandler.setTint(new Color(0,0,0,230));
+					LightingHandler.update();
+					LightingHandler.draw(g);
+				} else if (hour<8||hour>=18) {
+					LightingHandler.setTint(new Color(20,0,0,127));
+					LightingHandler.update();
+					LightingHandler.draw(g);
+				}
+			}
+			g.setColor(Color.WHITE);
+			//Draw clock
+			if (!SceneManager.currentScene.menuScene) {
+				Game.uiClock.drawUI(g, 0, 0);
+				String ampm="am";
+				if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)>=12) {
+					ampm="pm";
+				}
+				int hours = Calendar.getInstance().get(Calendar.HOUR);
+				String hourText;
+				if (hours<10) {
+					hourText = "0"+hours;
+				} else {
+					hourText = hours+"";
+				}
+				int minutes = Calendar.getInstance().get(Calendar.MINUTE);
+				String minuteText;
+				if (minutes<10) {
+					minuteText = "0"+minutes;
+				} else {
+					minuteText = minutes+"";
+				}
+				String timeText=hourText+":"+minuteText+ampm;
+				int pos = 0;
+				for (char c:timeText.toUpperCase().toCharArray()) {
+					if (ClockText.getCharacterImage(c)!=null)
+						ClockText.getCharacterImage(c).drawUI(g, pos*6+5, 2);
+					pos++;
+				}
+			}
+			//Draw pop-up menu;
+			if (Game.p.menu) {
+				Game.menu.draw(g);
+			}
+			if (MessageHandler.busy) {
+				MessageHandler.draw(g);
+			}
 		
-		
-		//Draw Dawn/Evening/Night Shading;
-		int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-		if (!(SceneManager.currentScene.lighting==Scene.LIGHT)&&!SceneManager.currentScene.menuScene) {
-			if (hour<6 || hour>20 || SceneManager.currentScene.lighting==Scene.DARK) {
-				LightingHandler.setTint(new Color(0,0,0,230));
-				LightingHandler.update();
-				LightingHandler.draw(g);
-			} else if (hour<8||hour>=18) {
-				LightingHandler.setTint(new Color(20,0,0,127));
-				LightingHandler.update();
-				LightingHandler.draw(g);
-			}
 		}
-		g.setColor(Color.WHITE);
-		//Draw clock
-		if (!SceneManager.currentScene.menuScene) {
-			Game.uiClock.drawUI(g, 0, 0);
-			String ampm="am";
-			if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)>=12) {
-				ampm="pm";
-			}
-			int hours = Calendar.getInstance().get(Calendar.HOUR);
-			String hourText;
-			if (hours<10) {
-				hourText = "0"+hours;
-			} else {
-				hourText = hours+"";
-			}
-			int minutes = Calendar.getInstance().get(Calendar.MINUTE);
-			String minuteText;
-			if (minutes<10) {
-				minuteText = "0"+minutes;
-			} else {
-				minuteText = minutes+"";
-			}
-			String timeText=hourText+":"+minuteText+ampm;
-			int pos = 0;
-			for (char c:timeText.toUpperCase().toCharArray()) {
-				if (ClockText.getCharacterImage(c)!=null)
-					ClockText.getCharacterImage(c).drawUI(g, pos*6+5, 2);
-				pos++;
-			}
-		}
-		//Draw pop-up menu;
-		if (Game.p.menu) {
-			Game.menu.draw(g);
-		}
-		if (MessageHandler.busy) {
-			MessageHandler.draw(g);
-		}
-		
 	}
 }

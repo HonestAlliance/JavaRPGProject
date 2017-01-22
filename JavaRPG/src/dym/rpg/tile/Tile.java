@@ -28,6 +28,7 @@ public class Tile extends Entity {
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(Color.WHITE);
+		System.out.println(image);
 		image.draw(g, (int)pos.x, (int)pos.y);
 	}
 

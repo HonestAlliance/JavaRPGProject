@@ -26,34 +26,37 @@ public class Tiles {
 	public static Image tile_asphalt_ur_in = new Image(new File("res"+File.separator+"tiles"+File.separator+"asphalt_ur_in.png"));
 	public static Image tile_asphalt_ur_out = new Image(new File("res"+File.separator+"tiles"+File.separator+"asphalt_ur_out.png"));
 	public static Image tile_asphalt = new Image(new File("res"+File.separator+"tiles"+File.separator+"asphalt.png"));
+	public static Image tile_sign1 = new Image(new File("res"+File.separator+"tiles"+File.separator+"sign1.png"));
 	
-	public static HashMap<String, Image> tiles = new HashMap<String, Image>();
+	public static HashMap<Integer, Image> tiles;
 	
 	public static void init() {
+		tiles = new HashMap<Integer, Image>();
 		/*
 		 * NOTE: Dylan, I'm sorry, but I shortened "asphalt" to "as". Otherwise, I'd go completely insane.
 		 * I do kind of want to continue that naming convention, but it's alright for right now.
 		 * ~Jordan
 		 */
-		tiles.put("grass1", tile_grass1);
-		tiles.put("reck", tile_rock);
-		tiles.put("boulder_brown", tile_boulder_brown);
-		tiles.put("boulder_grey", tile_boulder_grey);
-		tiles.put("lamp_base", tile_lamp_base);
-		tiles.put("lamp_post", tile_lamp_post);
-		tiles.put("lamp", tile_lamp);
-		tiles.put("as_b", tile_asphalt_b);
-		tiles.put("as_dl_in", tile_asphalt_dl_in);
-		tiles.put("as_dl_out", tile_asphalt_dl_out);
-		tiles.put("as_dr_in", tile_asphalt_dr_in);
-		tiles.put("as_dr_out", tile_asphalt_dr_out);
-		tiles.put("as_l", tile_asphalt_l);
-		tiles.put("as_r", tile_asphalt_r);
-		tiles.put("as_u", tile_asphalt_u);
-		tiles.put("as_ul_in", tile_asphalt_ul_in);
-		tiles.put("as_ul_out", tile_asphalt_ul_out);
-		tiles.put("as_ur_in", tile_asphalt_ur_in);
-		tiles.put("as_ur_out", tile_asphalt_ur_out);
-		tiles.put("as", tile_asphalt);
+		tiles.put(0, tile_grass1);
+		tiles.put(-1, tile_rock);
+		tiles.put(1, tile_boulder_brown);
+		tiles.put(2, tile_boulder_grey);
+		tiles.put(3, tile_lamp_base);
+		tiles.put(4, tile_lamp_post);
+		tiles.put(5, tile_lamp);
+		tiles.put(6, tile_asphalt_b);
+		tiles.put(7, tile_asphalt_dl_in);
+		tiles.put(8, tile_asphalt_dl_out);
+		tiles.put(9, tile_asphalt_dr_in);
+		tiles.put(10, tile_asphalt_dr_out);
+		tiles.put(11, tile_asphalt_l);
+		tiles.put(12, tile_asphalt_r);
+		tiles.put(13, tile_asphalt_u);
+		tiles.put(14, tile_asphalt_ul_in);
+		tiles.put(15, tile_asphalt_ul_out);
+		tiles.put(16, tile_asphalt_ur_in);
+		tiles.put(17, tile_asphalt_ur_out);
+		tiles.put(18, tile_asphalt);
+		tiles.put(19, tile_sign1);
 	}
 }
