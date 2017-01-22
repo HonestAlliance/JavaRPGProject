@@ -9,7 +9,7 @@ public class SceneManager {
 	public static TestScene2 testScene2 = new TestScene2();
 	public static SettingsScreen settings = new SettingsScreen();
 	
-	public static Scene currentScene = testScene1;
+	public static Scene currentScene = testScene2;
 	public static Scene prevScene = currentScene;
 	public static void gotoScene(Scene s) {
 		prevScene = currentScene;

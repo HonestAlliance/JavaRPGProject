@@ -7,6 +7,7 @@ import java.util.Calendar;
 
 import javax.swing.JPanel;
 
+import dym.rpg.entities.Billboard;
 import dym.rpg.entities.Entity;
 import dym.rpg.graphics.shading.Shader;
 import dym.rpg.graphics.text.ClockText;
@@ -53,21 +54,30 @@ public class Display extends JPanel {
 		//Draw all tiles.
 		SceneManager.currentScene.tileMap.drawTiles(g);
 		for (Entity e : SceneManager.currentScene.entities) {
-			e.draw(g);
+				if (e.pos.y<Game.p.pos.y) 
+					e.draw(g);
+			
 		}
+		
+		
 		//Draw the player (Unless on menu)
 		if (!SceneManager.currentScene.menuScene)
 			Game.p.draw(g);
+		
+		for (Entity e : SceneManager.currentScene.entities) {
+			if (e.pos.y>=Game.p.pos.y)
+				e.draw(g);
+		}
 		
 		
 		//Draw Dawn/Evening/Night Shading;
 		int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 		if (!(SceneManager.currentScene.lighting==Scene.LIGHT)&&!SceneManager.currentScene.menuScene) {
-			if (hour<6 || hour>20 || SceneManager.currentScene.lighting==Scene.DARK) {
+			if (hour<9 || hour>19 || SceneManager.currentScene.lighting==Scene.DARK) {
 				Shader.setTint(new Color(0,0,0,230));
 				Shader.update();
 				Shader.draw(g);
-			} else if (hour<8||hour>=18) {
+			} else if (hour<7||hour>=21) {
 				Shader.setTint(new Color(20,0,0,127));
 				Shader.update();
 				Shader.draw(g);
@@ -87,6 +97,9 @@ public class Display extends JPanel {
 				hourText = "0"+hours;
 			} else {
 				hourText = hours+"";
+			}
+			if (hourText.equals("00")) {
+				hourText="12";
 			}
 			int minutes = Calendar.getInstance().get(Calendar.MINUTE);
 			String minuteText;

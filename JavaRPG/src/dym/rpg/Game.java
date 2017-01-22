@@ -14,8 +14,8 @@ import dym.rpg.entities.player.Menu;
 import dym.rpg.entities.player.Player;
 import dym.rpg.graphics.Image;
 import dym.rpg.graphics.Sprite;
-import dym.rpg.graphics.shading.Light;
 import dym.rpg.graphics.shading.Shader;
+import dym.rpg.graphics.staticImages.BBLamp;
 import dym.rpg.graphics.staticImages.UIClock;
 import dym.rpg.graphics.staticImages.UIMenu;
 import dym.rpg.graphics.staticImages.UIMenuInventoryButton;
@@ -35,6 +35,7 @@ import dym.rpg.scene.SceneManager;
 import dym.rpg.sound.SoundMixer;
 //import dym.rpg.sound.staticSounds.TestMusic;
 //import dym.rpg.sound.staticSounds.TestSFX;
+import dym.rpg.tile.Tiles;
 
 public class Game extends JFrame {
 	private static final long serialVersionUID = 665457190433165744L;
@@ -50,6 +51,8 @@ public class Game extends JFrame {
 	public static SprCharR sprCharR = new SprCharR();
 	
 	public static Vector2 camera = new Vector2();
+	
+	public static BBLamp lamp = new BBLamp();
 	
 	public static Menu menu = new Menu();
 	public static UIMenu uiMenu = new UIMenu(); 

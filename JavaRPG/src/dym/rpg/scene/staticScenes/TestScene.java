@@ -1,5 +1,6 @@
 package dym.rpg.scene.staticScenes;
 
+import dym.rpg.entities.Billboards.Lamp;
 import dym.rpg.graphics.shading.Light;
 import dym.rpg.physics.Collision;
 import dym.rpg.physics.CollisionMap.CollisionType;
@@ -43,6 +44,7 @@ public class TestScene extends Scene {
 		collisionMap.collisions.add(new Collision(CollisionType.SOLID, 112, 64));
 		collisionMap.collisions.add(new Collision(CollisionType.SOLID, 112, 80));
 		collisionMap.collisions.add(new Collision(CollisionType.SOLID, 112, 96));
+		collisionMap.collisions.add(new Collision(CollisionType.SOLID, 64, 48));
 		
 		///
 		///Tiles
@@ -59,9 +61,7 @@ public class TestScene extends Scene {
 		tileMap.backTiles.add(new Tile(new Vector2(0,0), Tiles.tile_boulder_brown));
 		tileMap.backTiles.add(new Tile(new Vector2(16,0), Tiles.tile_boulder_brown));
 		tileMap.backTiles.add(new Tile(new Vector2(32,0), Tiles.tile_boulder_brown));
-		tileMap.backTiles.add(new Tile(new Vector2(48,0), Tiles.tile_lamp_base));
-		tileMap.backTiles.add(new Tile(new Vector2(48,-16), Tiles.tile_lamp_post));
-		tileMap.backTiles.add(new Tile(new Vector2(48,-32), Tiles.tile_lamp));
+		tileMap.backTiles.add(new Tile(new Vector2(48,0), Tiles.tile_boulder_brown));
 		tileMap.backTiles.add(new Tile(new Vector2(64,0), Tiles.tile_boulder_brown));
 		tileMap.backTiles.add(new Tile(new Vector2(80,0), Tiles.tile_boulder_brown));
 		tileMap.backTiles.add(new Tile(new Vector2(96,0), Tiles.tile_boulder_brown));
@@ -154,12 +154,12 @@ public class TestScene extends Scene {
 		///
 		///Entities
 		///
-		
+		entities.add(new Lamp(64,48));
 		
 		
 		///
 		///Lights
 		///
-		lights.add(new Light(new Vector2(48,-32),40.0F));
+		lights.add(new Light(new Vector2(64,16), 40.0F));
 	}
 }
